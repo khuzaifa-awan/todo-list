@@ -15,15 +15,11 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo 'No automated tests provided.'
-            }
-        }
-
         stage('Deploy') {
             steps {
-                echo 'Ready to deploy to EC2 server.'
+                echo 'Deploying to /var/www/html/'
+                sh 'sudo rm -rf /var/www/html/*'
+                sh 'sudo cp -r * /var/www/html/'
             }
         }
     }
